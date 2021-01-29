@@ -33,20 +33,12 @@ public class RomanNumerals {
         }
     }
     public static int romanToArabic(String roman){
+        if(!checkString(roman)) return -1;
         int arabic = 0;
-        int current;
-        int after;
         for(int i = roman.length()-1 ; i >= 0; i--){
-            if(!checkNumber(roman.charAt(i))) return -1;
-            if(i > 0){
-                current = numbers.get(roman.charAt(i));
-                after = numbers.get(roman.charAt(i-1));
-                if(current > after){
-                    arabic += (current - after);
-                    i--;
-                }else{
-                    arabic += current;
-                }
+            if(i > 0 && numbers.get(roman.charAt(i)) > numbers.get(roman.charAt(i-1))){
+                arabic += (numbers.get(roman.charAt(i)) - numbers.get(roman.charAt(i-1)));
+                i--;
             }else{
                 arabic += numbers.get(roman.charAt(i));
             }
@@ -71,7 +63,14 @@ public class RomanNumerals {
         return roman.toString();
     }
 
-    public static boolean checkNumber(char num){
+    private static boolean checkString(String roman){
+        for (int i = 0 ; i < roman.length(); i++){
+            if(!checkNumber(roman.charAt(i))) return false;
+        }
+        return true;
+    }
+
+    private static boolean checkNumber(char num){
         return num == 'M' ||
                 num == 'D' ||
                 num == 'C' ||
@@ -80,4 +79,6 @@ public class RomanNumerals {
                 num == 'V' ||
                 num == 'I';
     }
+
+
 }

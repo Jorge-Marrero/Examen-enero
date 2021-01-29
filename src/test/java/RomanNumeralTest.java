@@ -9,7 +9,7 @@ public class RomanNumeralTest {
         assertTrue(RomanNumerals.arabicToRoman((4)).equals("IV"));
         assertTrue(RomanNumerals.arabicToRoman((1666)).equals("MDCLXVI"));
         assertTrue(RomanNumerals.arabicToRoman((1990)).equals("MCMXC"));
-        assertTrue(RomanNumerals.arabicToRoman((-50000)).equals("Numero no valido"));
+        assertTrue(RomanNumerals.arabicToRoman((-4562)).equals("Numero no valido"));
     }
 
     @Test
@@ -19,5 +19,8 @@ public class RomanNumeralTest {
         assertTrue(RomanNumerals.romanToArabic("MDCLXVI") == 1666);
         assertTrue(RomanNumerals.romanToArabic("MCMXC") == 1990);
         assertTrue(RomanNumerals.romanToArabic("Esto no es un numero") == -1);
+        assertTrue(RomanNumerals.romanToArabic("MDCGXVI") == -1);
+        assertTrue(RomanNumerals.romanToArabic("ZDCXVI") == -1);
+        assertTrue(RomanNumerals.romanToArabic("MDCXVP") == -1);
     }
 }
