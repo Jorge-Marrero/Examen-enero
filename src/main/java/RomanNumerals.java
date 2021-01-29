@@ -13,14 +13,14 @@ public class RomanNumerals {
         numbers.put('I', 1);
     }
 
-    enum characters{
+    enum Characters{
         M(1000), CM(900), D(500),CD(400),
         C(100), XC(90), L(50), XL(40),
         X(10), IX(9), V(5), IV(4), I(1);
 
         private int value;
 
-        characters(int value){
+        Characters(int value){
             this.value = value;
         }
 
@@ -28,8 +28,8 @@ public class RomanNumerals {
             return value;
         }
 
-        public static List<characters> getReverseSortedValues() {
-            return Arrays.stream(values()).sorted(Comparator.comparing((characters e) -> e.value).reversed()).collect(Collectors.toList());
+        public static List<Characters> getReverseSortedValues() {
+            return Arrays.stream(values()).sorted(Comparator.comparing((Characters e) -> e.value).reversed()).collect(Collectors.toList());
         }
     }
     public static int romanToArabic(String roman){
@@ -48,7 +48,7 @@ public class RomanNumerals {
 
     public static String arabicToRoman(int arabic){
         if (arabic < 1) return "Numero no valido";
-        List<characters> arabicList = characters.getReverseSortedValues();
+        List<Characters> arabicList = Characters.getReverseSortedValues();
         StringBuilder roman = new StringBuilder();
         int i = 0;
         while (i < arabicList.size() && (arabic > 0)){
