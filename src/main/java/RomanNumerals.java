@@ -52,10 +52,9 @@ public class RomanNumerals {
         StringBuilder roman = new StringBuilder();
         int i = 0;
         while (i < arabicList.size() && (arabic > 0)){
-            characters current = arabicList.get(i);
-            if(current.getValue() <= arabic){
-                roman.append(current.name());
-                arabic -= current.getValue();
+            if(arabicList.get(i).getValue() <= arabic){
+                roman.append(arabicList.get(i).name());
+                arabic -= arabicList.get(i).getValue();
             }else{
                 i++;
             }
